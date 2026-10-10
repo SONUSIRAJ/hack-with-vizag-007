@@ -1,0 +1,373 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   VigorFIT — Cream Light Design System (SIH 2026)
+   Primary: Cream #FAF5E8 | Accent: Crimson #E50914
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Dark obsidian (Workout / LiveCamera screens) ── */
+  --bg-primary:    #090D16;
+  --bg-secondary:  #121826;
+  --bg-accent:     #1A2234;
+  --text-primary:  #F8FAFC;
+  --text-secondary:#94A3B8;
+  --text-muted:    #64748B;
+  --crimson:       #E50914;
+  --crimson-dark:  #B8000A;
+  --orange:        #FF5722;
+  --border:        rgba(255,255,255,0.08);
+  --border-accent: rgba(229,9,20,0.3);
+  --shadow-sm:     0 2px 8px  rgba(0,0,0,0.3);
+  --shadow-md:     0 8px 24px rgba(0,0,0,0.4);
+  --shadow-lg:     0 16px 40px rgba(0,0,0,0.6);
+  --shadow-xl:     0 24px 60px rgba(0,0,0,0.8);
+}
+
+/* ─── Global Body ─── */
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: #FAF5E8;
+    color: #1e293b;
+    font-family: 'Outfit', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', 'Outfit', sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #FAF5E8; }
+  ::-webkit-scrollbar-thumb { background: rgba(229,9,20,0.3); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(229,9,20,0.55); }
+
+  /* Hide scrollbar utility */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* ─── Keyframes ─── */
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes pulse-subtle {
+  0%, 100% { transform: scale(1);    opacity: 1;    }
+  50%       { transform: scale(1.03); opacity: 0.92; }
+}
+@keyframes pattern-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 48px 48px; }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-8px) rotate(0.5deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(229,9,20,0.3); }
+  50%       { box-shadow: 0 0 30px rgba(229,9,20,0.55); }
+}
+@keyframes float-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes wave-drift {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 0%; }
+}
+@keyframes geometric-pattern-motion {
+  0%   { background-position: 0px 0px; }
+  50%  { background-position: 300px 300px; }
+  100% { background-position: 0px 0px; }
+}
+@keyframes motion-bg-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0px,   0px)  scale(1);    opacity: 0.45; }
+  50%       { transform: translate(50px, -40px) scale(1.12); opacity: 0.65; }
+}
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0px,  0px)  scale(1);    opacity: 0.35; }
+  50%       { transform: translate(-40px, 50px) scale(1.08); opacity: 0.55; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ─── Animation Classes ─── */
+.animate-float-card     { animation: float-subtle 4.5s ease-in-out infinite; }
+.animate-pulse-subtle   { animation: pulse-subtle 3s ease-in-out infinite; }
+.animate-float-slow     { animation: float-slow 5s ease-in-out infinite; }
+.animate-pulse-glow     { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-float-in       { animation: float-in 0.4s cubic-bezier(0.16,1,0.3,1); }
+.animate-wave-motion    { animation: wave-drift 24s ease-in-out infinite; }
+.animate-orb-1          { animation: orb-float-1 12s ease-in-out infinite; }
+.animate-orb-2          { animation: orb-float-2 15s ease-in-out infinite; }
+
+/* ─── Motion Card / Button ─── */
+.motion-card {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+.motion-card:hover {
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: 0 16px 40px -12px rgba(229,9,20,0.22);
+}
+.motion-btn {
+  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+.motion-btn:hover  { transform: translateY(-2px) scale(1.04); }
+.motion-btn:active { transform: translateY(0) scale(0.97); }
+
+/* ─── Typography ─── */
+.font-heading {
+  font-family: 'Playfair Display', 'Instrument Serif', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+.font-curvy { font-family: 'Syne', 'Outfit', sans-serif; }
+
+/* ─── Backgrounds ─── */
+.bg-cream-dots {
+  background-color: #FAF5E8;
+  background-image: radial-gradient(#E50914 1.4px, transparent 1.4px);
+  background-size: 24px 24px;
+  animation: pattern-drift 30s linear infinite;
+}
+.bg-cream-grid {
+  background-color: #FFFBF0;
+  background-image:
+    linear-gradient(to right,  rgba(229,9,20,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229,9,20,0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: pattern-drift 40s linear infinite;
+}
+.bg-login-geometric-motion {
+  background-color: #ffffff;
+  background-image: url('/login-pattern.svg');
+  background-size: 480px 480px;
+  background-repeat: repeat;
+  animation: geometric-pattern-motion 45s linear infinite;
+  filter: brightness(1.12) contrast(1.12);
+}
+.bg-simple-motion {
+  background: linear-gradient(-45deg, #FAF5E8, #FFE8EB, #FFF8EE, #FDE2E4);
+  background-size: 300% 300%;
+  animation: motion-bg-drift 16s ease infinite;
+}
+.bg-organic-waves {
+  background-color: #FAF5E8;
+  background-image: radial-gradient(rgba(229,9,20,0.15) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+.bg-pattern-dots {
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+.bg-pattern-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+}
+
+/* ─── Glow Orbs ─── */
+.glow-orb-crimson {
+  position: absolute;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(229,9,20,0.18) 0%, rgba(255,87,34,0.05) 50%, transparent 75%);
+  filter: blur(60px);
+  pointer-events: none;
+  border-radius: 50%;
+}
+.glow-orb-blue {
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* ─── Glassmorphic Cards (Light Aesthetic) ─── */
+.glass-panel {
+  background: rgba(250,245,232,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(229,9,20,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 1.5rem;
+  color: #0f172a;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.glass-panel:hover {
+  border-color: rgba(229,9,20,0.5);
+  box-shadow: 0 14px 40px rgba(229,9,20,0.12);
+}
+.glass-card {
+  background: rgba(255,251,240,0.95);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(226,232,240,0.9);
+  border-radius: 1.25rem;
+  color: #0f172a;
+  transition: all 0.25s ease;
+}
+.glass-card:hover {
+  background: rgba(255,248,238,1);
+  border-color: rgba(229,9,20,0.35);
+}
+
+/* ─── Dark Glass (Workout / LiveCamera screens) ─── */
+.dark-glass-panel {
+  background: rgba(18,24,38,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 1.5rem;
+  color: #F8FAFC;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  background: linear-gradient(135deg, #E50914 0%, #B8000A 100%);
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  box-shadow: 0 4px 20px rgba(229,9,20,0.35);
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.02em;
+}
+.btn-primary:hover  { box-shadow: 0 6px 28px rgba(229,9,20,0.5); transform: translateY(-2px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  background: #FFF8EE;
+  color: #1e293b;
+  font-weight: 700;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover { border-color: #E50914; color: #E50914; }
+
+/* ─── Input Fields — Light Version (default, on cream pages) ─── */
+.input-field {
+  width: 100%;
+  background: #FFF8EE;
+  border: 2px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: 'Outfit', sans-serif;
+}
+.input-field:focus {
+  border-color: #E50914;
+  box-shadow: 0 0 0 3px rgba(229,9,20,0.12);
+  background: #fff;
+}
+.input-field::placeholder { color: #94a3b8; }
+
+/* ─── Input Fields — Dark Version (Workout/Camera screens) ─── */
+.input-field-dark {
+  width: 100%;
+  background: rgba(18,24,38,0.8);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 0.875rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s ease;
+}
+.input-field-dark:focus {
+  border-color: var(--crimson);
+  box-shadow: 0 0 0 3px rgba(229,9,20,0.2);
+  background: rgba(26,34,52,0.9);
+}
+.input-field-dark::placeholder { color: var(--text-muted); }
+select.input-field-dark option { background-color: #121826; color: #F8FAFC; }
+
+/* ─── Badges ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.badge-crimson {
+  background: rgba(229,9,20,0.12);
+  color: #E50914;
+  border: 1px solid rgba(229,9,20,0.28);
+}
+.badge-success {
+  background: rgba(16,185,129,0.1);
+  color: #059669;
+  border: 1px solid rgba(16,185,129,0.25);
+}
+.badge-amber {
+  background: rgba(245,158,11,0.1);
+  color: #D97706;
+  border: 1px solid rgba(245,158,11,0.25);
+}
+
+/* ─── Glow Luxe ─── */
+.glow-luxe { animation: pulse-glow 3s infinite ease-in-out; }
+
+/* ─── Skeleton Shimmer ─── */
+.skeleton {
+  background: linear-gradient(90deg, #f0ebe0 25%, #ffe8dc 50%, #f0ebe0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 0.75rem;
+}
+
+/* ─── Analytics / History Charts ─── */
+.chart-card {
+  background: rgba(250,245,232,0.97);
+  border: 2.5px solid rgba(229,9,20,0.2);
+  border-radius: 2rem;
+  padding: 1.25rem;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.chart-card:hover {
+  border-color: rgba(229,9,20,0.42);
+  box-shadow: 0 12px 36px rgba(229,9,20,0.1);
+}
+
+/* ─── Navigation ─── */
+.nav-item-active { color: #E50914; }
+.nav-item        { color: #94a3b8; transition: color 0.2s ease; }
+.nav-item:hover  { color: #1e293b; }
